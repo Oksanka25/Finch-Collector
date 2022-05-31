@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} - Finches {% endblock %}
+{% block content %}
+<a class="button is-dark" href="{% url 'finch_create' %}">Add Finch</a>
+    <h1>This is the Finches list page</h1>
+    {% for finch in finches %}
+        <a href="{{finch.id}}" >
+            <h3>{{finch.name}}</h3>
+        </a>
+        <p> Population: {{finch.population}}</p>
+        <img src="{{finch.img}}" alt="{{finch.name}}" />
+        <p> Habitat: {{finch.habitat}}</p>
+        <p> Threats:: {{finch.threat}}</p>
+        <p> Note: {{finch.note}}</p>
+
+    {% endfor %}
+{% endblock %}
