@@ -1,3 +1,18 @@
 from django.db import models
 
-# Create your models here.
+
+class Finch(models.Model):
+
+    name = models.CharField(max_length=100)
+    img = models.CharField(max_length=250)
+    habitat = models.TextField(max_length=200)
+    note = models.TextField(max_length=500)
+    population = models.TextField(max_length=20)
+    threat = models.TextField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
