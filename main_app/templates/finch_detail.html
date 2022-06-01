@@ -27,6 +27,27 @@
         <p> Note: {{finch.note}}</p>
 
     </div>
+
+    <div class="detail__songs mb-5">
+        <h3 class="title is-3">Songs</h3>
+    
+        {% for song in finch.songs.all %}
+        <div class="song">
+          <span>{{forloop.counter}}</span>
+          <a href="{{song.audio}}"> {{song.title }}</a>
+          <br>
+          <span>{{song.description}}</span>
+        </div>
+            {% empty %}
+        <article class="message">
+          <div class="message-header">
+            <p>No Songs Available</p>
+          </div>
+        </article>
+    
+        {% endfor %}
+      </div>
+
     <div class="mt-5">
         <a href="{% url 'finch_list' %}" >
             <h3> Back to the Finches List </h3>
