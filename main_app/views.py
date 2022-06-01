@@ -22,10 +22,11 @@ class FinchList(TemplateView):
         context = super().get_context_data(**kwargs)
         name = self.request.GET.get("name")
         if name != None:
-            context["finches"] = Finch.objects.filter(name__icontains=name)
+            context["finches"] = Finch.objects.filter(
+                name__icontains=name, user=self.request.user)
             context["header"] = f"Searching for {name}"
         else:
-            context["finches"] = Finch.objects.all()
+            context["finches"] = Finch.objects.filter(user=self.request.user)
             context["header"] = "Amazing Finches"
         return context
 
@@ -34,6 +35,10 @@ class FinchCreate(CreateView):
     model = Finch
     fields = ['name', 'img', 'habitat', 'note', 'population', 'threat']
     template_name = "finch_create.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(FinchCreate, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('finch_detail', kwargs={'pk': self.object.pk})
