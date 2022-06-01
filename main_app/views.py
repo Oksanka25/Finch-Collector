@@ -73,3 +73,20 @@ class SongCreate(View):
         Song.objects.create(
             title=title, description=description, audio=audio, finch=finch)
         return redirect('finch_detail', pk=pk)
+
+
+class SongUpdate(UpdateView):
+    model = Song
+    fields = ['title', 'description', 'audio']
+    template_name = "song_update.html"
+
+    def get_success_url(self):
+        return reverse('finch_detail', kwargs={'pk': self.object.finch_id})
+
+
+class SongDelete(DeleteView):
+    model = Song
+    template_name = "song_delete.html"
+
+    def get_success_url(self):
+        return reverse('finch_detail', kwargs={'pk': self.object.finch_id})
