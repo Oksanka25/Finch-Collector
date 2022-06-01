@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import DetailView
+from django.urls import reverse
+
 
 from .models import Finch
 
@@ -30,12 +32,23 @@ class FinchCreate(CreateView):
     model = Finch
     fields = ['name', 'img', 'habitat', 'note', 'population', 'threat']
     template_name = "finch_create.html"
-    success_url = "/finches/"
+
+    def get_success_url(self):
+        return reverse('finch_detail', kwargs={'pk': self.object.pk})
 
 
 class FinchDetail(DetailView):
     model = Finch
     template_name = "finch_detail.html"
+
+
+class FinchUpdate(UpdateView):
+    model = Finch
+    fields = ['name', 'img', 'habitat', 'note', 'population', 'threat']
+    template_name = "finch_update.html"
+
+    def get_success_url(self):
+        return reverse('finch_detail', kwargs={'pk': self.object.pk})
 
 
 class About(TemplateView):
