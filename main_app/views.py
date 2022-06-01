@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
 
@@ -51,9 +51,11 @@ class FinchUpdate(UpdateView):
         return reverse('finch_detail', kwargs={'pk': self.object.pk})
 
 
+class FinchDelete(DeleteView):
+    model = Finch
+    template_name = "finch_delete.html"
+    success_url = "/finches/"
+
+
 class About(TemplateView):
     template_name = 'about.html'
-
-
-class Index(TemplateView):
-    template_name = 'index.html'
