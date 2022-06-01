@@ -11,5 +11,7 @@ urlpatterns = [
          views.FinchUpdate.as_view(), name="finch_update"),
     path('finches/<int:pk>/delete',
          views.FinchDelete.as_view(), name="finch_delete"),
+    path('finches/<int:pk>/songs/new/',
+         views.SongCreate.as_view(), name="song_create"),
 
 ]

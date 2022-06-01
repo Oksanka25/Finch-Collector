@@ -1,42 +1,5 @@
-/* body {
-    background-color: #cfc7c7;
-    color: #ffffff;
-    min-height: 100vh;
-}
-
-h1,
-h2,
-h3 {
-    color: #0c0b0b;
-}
-
-.title {
-    color: #0a0a0a;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    justify-content: center;
-    gap: 30px;
-}
-
-.gallery .card {
-    transition: .1s linear;
-}
-
-.gallery .card:hover {
-    transform: scale(1.1);
-    z-index: 10;
-}
-
-p {
-    font-size: 12px;
-} */
-
-
 body {
-    background-color: #121212;
+    background-color: #d4c8c8;
     color: #ffffff;
     min-height: 100vh;
 }

@@ -4,9 +4,11 @@ from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
+from django.shortcuts import redirect
+from django.views import View
 
 
-from .models import Finch
+from .models import Finch, Song
 
 
 class Home(TemplateView):
@@ -59,3 +61,15 @@ class FinchDelete(DeleteView):
 
 class About(TemplateView):
     template_name = 'about.html'
+
+
+class SongCreate(View):
+    def post(self, request, pk):
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        # length = request.POST.get("length")
+        audio = request.POST.get("audio")
+        finch = Finch.objects.get(pk=pk)
+        Song.objects.create(
+            title=title, description=description, audio=audio, finch=finch)
+        return redirect('finch_detail', pk=pk)
