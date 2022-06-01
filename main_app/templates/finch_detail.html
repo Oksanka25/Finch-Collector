@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<h1 class="title">{{finch.name}}</h1>
+
+<div class="detail__img">
+    <img src="{{finch.img}}" alt="{{finch.name}}" />
+</div>
+<div class="detail__container">
+    <div class="buttons">
+        <a href="" class="button is-info">
+            <span class="icon">
+                <i class="fas fa-edit"></i>
+            </span>
+        </a>
+        <a href="" class="button is-danger">
+            <span class="icon">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </a>
+    </div>
+    <div class="detail__about">
+        <h4 class="title is-4">About</h4>
+        <p> Population: {{finch.population}}</p>
+        <p> Habitat: {{finch.habitat}}</p>
+        <p> Threats:: {{finch.threat}}</p>
+        <p> Note: {{finch.note}}</p>
+
+    </div>
+    <div class="mt-5">
+        <a href="{% url 'finch_list' %}" >
+            <h3> Back to the Finches List </h3>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

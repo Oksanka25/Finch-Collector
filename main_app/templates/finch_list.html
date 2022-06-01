@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %} - Finches {% endblock %}
 {% block content %}
-<a class="button is-dark" href="{% url 'finch_create' %}">Add Finch</a>
     <h1 class="title pt-5">{{header}}</h1>
     <form class="mb-5" method="get">
         <div class="field has-addons">
@@ -15,7 +14,7 @@
         <a class="button is-dark" href="{% url 'finch_list' %}">Clear Search</a>
       </form>
     {% for finch in finches %}
-        <a href="{{finch.id}}" >
+        <a href="{% url 'finch_detail' finch.pk %}" >
             <h3>{{finch.name}}</h3>
         </a>
         <p> Population: {{finch.population}}</p>

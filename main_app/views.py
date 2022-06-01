@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.http import HttpResponse
-# This will import the class we are extending
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView
 
-# import models
 from .models import Finch
 
 
@@ -32,6 +31,11 @@ class FinchCreate(CreateView):
     fields = ['name', 'img', 'habitat', 'note', 'population', 'threat']
     template_name = "finch_create.html"
     success_url = "/finches/"
+
+
+class FinchDetail(DetailView):
+    model = Finch
+    template_name = "finch_detail.html"
 
 
 class About(TemplateView):
