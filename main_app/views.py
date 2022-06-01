@@ -17,7 +17,13 @@ class FinchList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["finches"] = Finch.objects.all()
+        name = self.request.GET.get("name")
+        if name != None:
+            context["finches"] = Finch.objects.filter(name__icontains=name)
+            context["header"] = f"Searching for {name}"
+        else:
+            context["finches"] = Finch.objects.all()
+            context["header"] = "Amazing Finches"
         return context
 
 
