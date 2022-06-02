@@ -25,9 +25,11 @@
                 </div>
                 <div class="navbar-menu navbar-start">
                     <a class="navbar-item" href="/finches"> Finches</a>
+                    <a class="navbar-item" href="{% url 'about' %}">About</a>
                 </div>
+                
                 <div class="navbar-brand"> 
-                    <a class="button is-dark" href="{% url 'finch_create' %}">Add Finch</a>
+                    <a class="navbar-item" href="{% url 'finch_create' %}">Add Finch</a>
                 </div>
                 <div class="navbar-menu navbar-end">
                     <span class="navbar-item">User: {{user.username}}</span>
@@ -37,8 +39,8 @@
                 {% else %}
                     <div class="navbar-menu navbar-end">
                         <a class="navbar-item" href="{% url 'login' %}">Log In</a>
-                        <a class="navbar-item" href="/about">About</a>
                         <a class="navbar-item" href="{% url 'signup' %}">Sign Up</a>
+                        <a class="navbar-item" href="{% url 'about' %}">About</a>
                     </div>
                 {% endif %}
                

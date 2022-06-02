@@ -12,7 +12,7 @@ class Finch(models.Model):
     threat = models.TextField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.name
@@ -31,3 +31,9 @@ class Song(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    favourite_bird = models.CharField(max_length=50)
+    bio = models.CharField(max_length=150)

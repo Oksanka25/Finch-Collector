@@ -1,122 +1,101 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<h1 class="title">{{finch.name}}</h1>
+<h1 class="title is-3 has-text-centered">{{finch.name}}</h1>
 
-<div class="detail__img">
-    <img src="{{finch.img}}" alt="{{finch.name}}" />
-</div>
-<div class="detail__container">
-    
+<div class="detail__container mb-4">
+    <div class="detail__img mb-4">
+        <img src="{{finch.img}}" alt="{{finch.name}}" />
+    </div>
     <div class="detail__about">
-        <h4 class="title is-4">About {{finch.name}}</h4>
-        <p> Population: {{finch.population}}</p>
-        <p> Habitat: {{finch.habitat}}</p>
-        <p> Threats: {{finch.threat}}</p>
-        <p> Note: {{finch.note}}</p>
+        <h4 class="title is-4">Details</h4>
+        <p class="detail__p"> <strong>Population:</strong> {{finch.population}}</p>
+        <p class="detail__p"> <strong>Habitat:</strong>  {{finch.habitat}}</p>
+        <p class="detail__p"> <strong>Threats:</strong> {{finch.threat}}</p>
+        <p class="detail__p"> <strong>Note:</strong> {{finch.note}}</p>
 
-    </div>
-    <div class="buttons">
-        <a href="{% url 'finch_update' finch.pk %}" class="button is-info">
-            <span class="icon ml-3">
-                <i class="fas fa-edit "> Update</i>
-            </span>
-        </a>
-        <a href="{% url 'finch_delete' finch.pk %}" class="button is-danger">
-            <span class="icon ml-3">
-                <i class="fas fa-trash-alt"> Delete</i>
-            </span>
-        </a>
-    </div>
-
-    <div class="detail__songs mb-5">
-        <h3 class="title is-3">Songs</h3>
-
-        <form class="mb-5" action="{% url 'song_create' finch.pk %}" method="post">
-            {% csrf_token %}
-            <div class="field has-addons">
-                <div class="control">
-                    <input
-                        class="input"
-                        type="text"
-                        name="title"
-                        placeholder="Title"
-                        required
-                    />
-                </div>
-                <div class="control">
-                    <input
-                        class="input"
-                        type="text"
-                        name="description"
-                        placeholder="Description"
-                        min="1"
-                        required
-                    />
-                </div>
-                <div class="control">
-                    <input
-                        class="input"
-                        type="text"
-                        name="audio"
-                        placeholder="Audio Link"
-                        min="1"
-                        required
-                    />
-                </div>
-                <div class="control">
-                    <input class="button is-primary" type="submit" value="Add Song" />
-                </div>
-            </div>
-        </form>
-    
-        {% for song in finch.songs.all %}
-        <div class="song">
-          <span>{{forloop.counter}}</span>
-          <a href="{{song.audio}}"> {{song.title }}</a>
-          <br>
-          <span>{{song.description}}</span>
-          <div class="buttons">
-            <a href="{% url 'song_update' song.pk%}" class="button is-info">
-                <span class="icon ml-3">
-                    <i class="fas fa-edit "> Update</i>
-                </span>
-            </a>  
-             <a href="{% url 'song_delete' song.pk%}" class="button is-danger">
-                <span class="icon ml-3">
-                    <i class="fas fa-trash-alt"> Delete</i>
-                </span>
-            </a>  
-     </div>  
+        <div class="buttons mt-4">
+            <a href="{% url 'finch_update' finch.pk %}" >
+                <button class="button is-info is-light mr-3"> Update</button>
+            </a>
+            <a href="{% url 'finch_delete' finch.pk %}" >
+                    <button class="button is-danger is-light"> Delete</button>
+            </a>
         </div>
-            {% empty %}
-        <article class="message">
-          <div class="message-header">
-            <p>No Songs Available</p>
-          </div>
-        </article>
-    
-        {% endfor %}
-      </div>
-   {% comment %} <div class="buttons">
-        <a href="{% url 'song_update' 1%}" class="button is-info">
-            <span class="icon ml-3">
-                <i class="fas fa-edit "> Update</i>
-            </span>
-        </a>  
-        <a href="{% url 'song_delete' 1 %}" class="button is-danger">
-            <span class="icon ml-3">
-                <i class="fas fa-trash-alt"> Delete</i>
-            </span>
-        </a> 
- </div>   {% endcomment %}
-
-
-    <div class="mt-5">
-        <a href="{% url 'finch_list' %}" >
-            <h3> Back to the Finches List </h3>
-        </a>
     </div>
 </div>
+
+
+<div class="detail__songs mb-5">
+    <h3 class="title is-3 mt-5 has-text-centered">Songs of {{finch.name}}</h3>
+
+    <form class="mb-4" action="{% url 'song_create' finch.pk %}" method="post">
+        {% csrf_token %}
+        <div class="field has-addons">
+            <div class="control">
+                <input
+                    class="input mr-1"
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    required
+                />
+            </div>
+            <div class="control ml-1 ">
+                <input
+                    class="input"
+                    type="text"
+                    name="description"
+                    placeholder="Description"
+                    min="1"
+                    required
+                />
+            </div>
+            <div class="control ml-1">
+                <input
+                    class="input"
+                    type="text"
+                    name="audio"
+                    placeholder="Audio Link"
+                    min="1"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input class="button is-primary is-light ml-2" type="submit" value="Add Song" />
+            </div>
+        </div>
+    </form>
+
+    {% for song in finch.songs.all %}
+    <div class="song">
+      <span>{{forloop.counter}}</span>
+      <a href="{{song.audio}}"> {{song.title }}</a>
+      <br>
+      <span>{{song.description}}</span>
+      <div class="buttons mt-3">
+        <a href="{% url 'song_update' song.pk%}">
+            <button class="button is-info is-light mr-3"> Update</button>
+        </a>  
+         <a href="{% url 'song_delete' song.pk%}" >
+            <button class="button is-danger is-light"> Delete</button>
+        </a>  
+ </div>  
+    </div>
+        {% empty %}
+    <article class="message">
+      <div class="message-header">
+        <p>No Songs Available</p>
+      </div>
+    </article>
+
+    {% endfor %}
+  </div>
+
+  <div class="mt-5">
+        <a href="{% url 'finch_list' %}" >
+            <h3 class="title is-5 mt-5"> Back to the Finches List </h3>
+        </a>
+    </div>
 
 {% endblock %}

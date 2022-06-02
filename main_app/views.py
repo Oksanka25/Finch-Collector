@@ -38,6 +38,7 @@ class FinchList(TemplateView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class FinchCreate(CreateView):
     model = Finch
     fields = ['name', 'img', 'habitat', 'note', 'population', 'threat']
@@ -51,11 +52,13 @@ class FinchCreate(CreateView):
         return reverse('finch_detail', kwargs={'pk': self.object.pk})
 
 
+@method_decorator(login_required, name='dispatch')
 class FinchDetail(DetailView):
     model = Finch
     template_name = "finch_detail.html"
 
 
+@method_decorator(login_required, name='dispatch')
 class FinchUpdate(UpdateView):
     model = Finch
     fields = ['name', 'img', 'habitat', 'note', 'population', 'threat']
@@ -65,6 +68,7 @@ class FinchUpdate(UpdateView):
         return reverse('finch_detail', kwargs={'pk': self.object.pk})
 
 
+@method_decorator(login_required, name='dispatch')
 class FinchDelete(DeleteView):
     model = Finch
     template_name = "finch_delete.html"
@@ -75,6 +79,7 @@ class About(TemplateView):
     template_name = 'about.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class SongCreate(View):
     def post(self, request, pk):
         title = request.POST.get("title")
@@ -87,6 +92,7 @@ class SongCreate(View):
         return redirect('finch_detail', pk=pk)
 
 
+@method_decorator(login_required, name='dispatch')
 class SongUpdate(UpdateView):
     model = Song
     fields = ['title', 'description', 'audio']
@@ -96,6 +102,7 @@ class SongUpdate(UpdateView):
         return reverse('finch_detail', kwargs={'pk': self.object.finch_id})
 
 
+@method_decorator(login_required, name='dispatch')
 class SongDelete(DeleteView):
     model = Song
     template_name = "song_delete.html"

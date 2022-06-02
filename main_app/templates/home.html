@@ -1,4 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Finches Home</h1>
+
+{% if user.is_authenticated %}
+
+<h1 class=" title is-3 has-text-centered"> Welcome Finches' Fans!</h1>
+<img src="https://i.ytimg.com/vi/C_GXFp4C8yE/maxresdefault.jpg" alt="finches" >
+
+{% else %}
+<h1 class=" title is-3 has-text-centered"> Welcome Finches' Fans!</h1>
+<div>
+<h2> Do you have an account?</h2>
+<button class="button is-primary is-light mb-5"><a  href="{% url 'login' %}">Log In</a></button> </div>
+
+<div>
+    <h2> Would you like to create an account?</h2>
+    <button class="button is-primary is-light mb-5"><a  href="{% url 'signup' %}">Sign Up</a></button> </div>
+<img src="https://i.ytimg.com/vi/C_GXFp4C8yE/maxresdefault.jpg" alt="finches">
+
+{% endif %}
 {% endblock %}

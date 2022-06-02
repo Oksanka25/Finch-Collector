@@ -1,8 +1,28 @@
-{% extends 'base.html' %} {% block content %}
-<h1 class="pt-3">Update {{finch.name}}</h1>
+{% extends 'base.html' %}
+ {% block content %}
 
-<form action="" method="post">
-  {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
-</form>
+<div class="container">
+      <div class="column is-half is-offset-one-quarter">
+          <div class="content">
+            <h2 class=" title is-4 has-text-centered"> Update {{finch.name}}</h2>
+          </div>
+          <form method="post">
+              {% csrf_token %}
+              {% for non_field_error in form.non_field_errors %}
+                  <p class="help is-danger">{{ non_field_error }}</p>
+              {% endfor %}
+              {% for field in form %}
+                  <div class="field">
+                      <label for="{{ field.id_for_label }}" class="label is-size-5">{{ field.html_name }}</label>
+                      {{ field }}
+                  {% for error in field.errors %}
+                      <p class="help is-danger">{{ error }}</p>
+                  {% endfor %}
+                  </div>
+              {% endfor %}
+              <input type="submit" value="Update Finch" class="button is-primary is-light">
+          </form>
+      </div>
+</div>
 
 {% endblock %}

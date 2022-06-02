@@ -18,5 +18,4 @@ urlpatterns = [
     path('songs/<int:pk>/delete',
          views.SongDelete.as_view(), name="song_delete"),
     path('accounts/signup/', views.Signup.as_view(), name="signup")
-
 ]
