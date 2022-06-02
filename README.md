@@ -21,7 +21,7 @@ Finch Collector is an app where a user can keep track of their collection of bir
 - 2 Models
 - One-to-Many relationship model
 
-### Stretch Goal to implement
+### Stretch Goals to implement
 - Add Many-to-Many relationship model
 - Add audio files instead of links to the song
 
