@@ -72,7 +72,7 @@
       <span>{{forloop.counter}}</span>
       <a href="{{song.audio}}"> {{song.title }}</a>
       <br>
-      <span>{{song.description}}</span>
+      <span class="detail__song">{{song.description}}</span>
       <div class="buttons mt-3">
         <a href="{% url 'song_update' song.pk%}">
             <button class="button is-info is-light mr-3"> Update</button>

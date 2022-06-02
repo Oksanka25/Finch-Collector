@@ -10,10 +10,6 @@ body {
     padding-right: 0;
 }
 
-.title {
-    color: #ffffff;
-}
-
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -50,7 +46,7 @@ p {
 }
 
 .detail__p {
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -70,4 +66,12 @@ textarea {
     width: max-content;
     height: max-content;
 
+}
+
+.navbar-item {
+    font-size: 20px;
+}
+
+.song {
+    font-size: 25px;
 }
