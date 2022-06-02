@@ -5,10 +5,10 @@
 
 <div class="detail__container mb-4">
     <div class="detail__img mb-4">
-        <img src="{{finch.img}}" alt="{{finch.name}}" />
+        <img  src="{{finch.img}}" alt="{{finch.name}}" />
     </div>
     <div class="detail__about">
-        <h4 class="title is-4">Details</h4>
+        <h4 class="title is-3">Details</h4>
         <p class="detail__p"> <strong>Population:</strong> {{finch.population}}</p>
         <p class="detail__p"> <strong>Habitat:</strong>  {{finch.habitat}}</p>
         <p class="detail__p"> <strong>Threats:</strong> {{finch.threat}}</p>
@@ -31,19 +31,21 @@
 
     <form class="mb-4" action="{% url 'song_create' finch.pk %}" method="post">
         {% csrf_token %}
-        <div class="field has-addons">
+        <div class="field">
             <div class="control">
                 <input
-                    class="input mr-1"
+                    class="input is-primary mb-1"
+                    style="width: 33%;"
                     type="text"
                     name="title"
                     placeholder="Title"
                     required
                 />
             </div>
-            <div class="control ml-1 ">
+            <div class="control mb-1 ">
                 <input
-                    class="input"
+                    class="input is-primary"
+                    style="width: 33%;"
                     type="text"
                     name="description"
                     placeholder="Description"
@@ -51,9 +53,10 @@
                     required
                 />
             </div>
-            <div class="control ml-1">
+            <div class="control mb-1 ">
                 <input
-                    class="input"
+                    class="input is-primary"
+                    style="width: 33%;"
                     type="text"
                     name="audio"
                     placeholder="Audio Link"
@@ -73,6 +76,7 @@
       <a href="{{song.audio}}"> {{song.title }}</a>
       <br>
       <span class="detail__song">{{song.description}}</span>
+
       <div class="buttons mt-3">
         <a href="{% url 'song_update' song.pk%}">
             <button class="button is-info is-light mr-3"> Update</button>
@@ -94,7 +98,7 @@
 
   <div class="mt-5">
         <a href="{% url 'finch_list' %}" >
-            <h3 class="title is-5 mt-5"> Back to the Finches List </h3>
+            <h3 class="title is-5 mt-5"> Back to All Finches </h3>
         </a>
     </div>
 

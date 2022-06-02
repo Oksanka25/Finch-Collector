@@ -26,5 +26,9 @@ Finch Collector is an app where a user can keep track of their collection of bir
 - Add audio files instead of links to the song
 
 ### Images
-![image](https://user-images.githubusercontent.com/101350351/171727963-426768c9-3503-40c4-a476-57f612227074.png)
-![image](https://user-images.githubusercontent.com/101350351/171728056-929e4509-95f5-4849-93f6-f0ec14792260.png)
+
+
+### Hint 
+If you want to see some finches, use login info:
+username: oksana
+password: oks25oks
