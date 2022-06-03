@@ -27,6 +27,9 @@ Finch Collector is an app where a user can keep track of their collection of bir
 
 ### Images
 
+![image](https://user-images.githubusercontent.com/101350351/171744962-fdfb8585-be46-413a-b393-086a3d9bfe44.png)
+![image](https://user-images.githubusercontent.com/101350351/171744880-177fb034-4b70-4cda-bb74-5ef5db7f29e9.png)
+
 
 ### Hint 
 If you want to see some finches, use login info:
