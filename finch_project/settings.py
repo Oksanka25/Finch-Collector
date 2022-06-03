@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-import django_heroku
+import django_on_heroku
 from pathlib import Path
 import os
 from pickle import FALSE
@@ -132,4 +132,4 @@ LOGIN_REDIRECT_URL = '/finches/'
 LOGOUT_REDIRECT_URL = '/'
 
 # Configure Django App for Heroku.
-django_heroku.settings(locals())
+django_on_heroku.settings(locals())
